@@ -1,0 +1,88 @@
+/* --- Window Styling --- */
+.window {
+    position: absolute;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    min-width: 200px;
+    min-height: 150px;
+    overflow: hidden; /* Required for the 'resize' property to work */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000; /* Changed to black */
+    outline: 1px solid #808080; /* Added outline */
+    background-color: #222222;
+}
+
+.window-title-bar {
+    background-color: #00ff00;
+    color: #000000;
+    padding: 5px;
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.window-title-bar .window-controls button {
+    background: none;
+    border: none;
+    color: #000000;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.window-content {
+    flex-grow: 1;
+    color: #00ff00;
+    position: relative;
+    overflow-y: auto;
+    height: 0;
+}
+
+/* Scrollbar styling for window-content */
+.window-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.window-content::-webkit-scrollbar-track {
+    background: #00AA00;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+    background: #00FF00;
+    border-radius: 4px;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+    background: #00CC00;
+}
+
+/* Custom frame windows (like Winamp) have no padding on the content wrapper */
+.window.custom-frame .window-content {
+    padding: 0;
+}
+
+.window.custom-frame {
+    border: none; /* Remove default border for custom frames */
+    background-color: transparent; /* Remove default background */
+    outline: none; /* Remove outline for custom frames */
+    box-shadow: none; /* Remove box-shadow for custom frames */
+}
+
+/* --- Resizing Handles --- */
+.resize-handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    z-index: 10;
+}
+.resize-handle-top-left { top: -5px; left: -5px; cursor: nwse-resize; }
+.resize-handle-top { top: -5px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
+.resize-handle-top-right { top: -5px; right: -5px; cursor: nesw-resize; }
+.resize-handle-right { top: 50%; right: -5px; transform: translateY(-50%); cursor: ew-resize; }
+.resize-handle-bottom-right { bottom: -5px; right: -5px; cursor: nwse-resize; }
+.resize-handle-bottom { bottom: -5px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
+.resize-handle-bottom-left { bottom: -5px; left: -5px; cursor: nesw-resize; }
+.resize-handle-left { top: 50%; left: -5px; transform: translateY(-50%); cursor: ew-resize; }

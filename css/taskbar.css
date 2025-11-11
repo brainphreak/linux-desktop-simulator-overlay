@@ -1,0 +1,226 @@
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #000000; /* Black taskbar */
+    border-top: 1px solid #00ff00; /* Green border */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.taskbar-start-menu,
+.taskbar-quick-launch,
+.taskbar-apps,
+.taskbar-system-tray {
+    display: flex;
+    align-items: center;
+}
+
+#terminal-quick-launch-button {
+    background-color: #000;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+#terminal-quick-launch-button::before {
+    content: '>';
+    margin-right: 3px;
+}
+
+#terminal-quick-launch-button::after {
+    content: '_';
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+#start-button {
+    background-color: #00ff00;
+    color: #000000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#start-button:hover {
+    background-color: #00cc00;
+}
+
+#start-menu {
+    position: absolute;
+    bottom: 40px; /* Above the taskbar */
+    left: 0;
+    background-color: #000000;
+    border: 1px solid #00ff00;
+    padding: 10px;
+    min-width: 150px;
+    display: flex; /* Changed from none to flex */
+    flex-direction: column;
+    z-index: 1100; /* Ensure it's above the taskbar */
+}
+
+#start-menu.hidden {
+    display: none;
+}
+
+#start-menu button {
+    background: none;
+    border: none;
+    color: #00ff00;
+    padding: 5px;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+}
+
+#start-menu button:hover {
+    background-color: #003300;
+}
+
+/* --- Hierarchical Start Menu --- */
+#start-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#start-menu li {
+    position: relative; /* For submenu positioning */
+}
+
+#start-menu li a {
+    color: #00ff00;
+    text-decoration: none;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Pushes arrow to the right */
+    align-items: center; /* Vertically aligns text and arrow */
+    padding: 8px 12px;
+    white-space: nowrap;
+}
+
+#start-menu li a:hover {
+    background-color: #003300;
+}
+
+.has-submenu > a::after {
+    content: '▶'; /* Indicator for submenu */
+    padding-left: 10px; /* Increased space between text and arrow */
+}
+
+.submenu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #000000;
+    border: 1px solid #00ff00;
+    min-width: 150px;
+    z-index: 1200;
+}
+
+.submenu.open-upward {
+    top: auto;
+    bottom: 0;
+}
+
+#start-menu li:hover > .submenu {
+    display: block; /* Show on hover */
+}
+
+#time,
+#date {
+    margin-left: 10px;
+    color: #00ff00;
+}
+
+.taskbar-apps {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.taskbar-app-button {
+    background: #222;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 5px 10px;
+    margin-left: 5px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.taskbar-app-button:hover {
+    background: #333;
+}
+
+.taskbar-app-button.active {
+    background: #005500; /* Darker green for active state */
+    border-style: inset;
+}
+
+.taskbar-button {
+    background: none;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.taskbar-button:hover {
+    background-color: #003300;
+}
+
+/* Start Menu (class-based for portable version) */
+.start-menu {
+    position: fixed; /* Fixed to viewport, not absolute */
+    bottom: 40px; /* Above the taskbar */
+    left: 0;
+    background-color: #1a1a1a;
+    border: 1px solid #00ff00;
+    min-width: 200px;
+    z-index: 99999 !important; /* Way above everything else */
+    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.3);
+}
+
+.start-menu-content {
+    /* Container for menu items */
+}
+
+.start-menu-item {
+    color: #00ff00;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    transition: background 0.2s;
+}
+
+.start-menu-item:last-child {
+    border-bottom: none;
+}
+
+.start-menu-item:hover {
+    background-color: #003300;
+}
+
+.start-menu-item span {
+    display: block;
+}

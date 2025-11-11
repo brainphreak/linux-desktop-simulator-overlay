@@ -1,0 +1,50 @@
+#calendar-popup {
+    position: absolute;
+    bottom: 40px; /* Above the taskbar */
+    right: 0;
+    background-color: #000000;
+    border: 1px solid #00ff00;
+    padding: 10px;
+    width: 300px;
+    height: 280px; /* Fixed height */
+    z-index: 1200; /* High z-index to appear on top */
+    color: #00ff00;
+}
+
+#calendar-popup.hidden {
+    display: none;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-header button {
+    background: none;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 5px;
+}
+
+.day-name {
+    font-weight: bold;
+}
+
+.today {
+    background-color: #003300;
+    border: 1px solid #00ff00;
+}

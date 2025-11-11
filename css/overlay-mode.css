@@ -1,0 +1,73 @@
+/* Overlay Mode - Desktop Environment floats over existing website */
+
+/* Allow body to scroll in overlay mode */
+body {
+    overflow: auto !important;
+}
+
+/* Make desktop completely transparent and non-blocking */
+#desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 40px); /* Account for taskbar */
+    background: transparent !important;
+    pointer-events: none; /* Allow clicks to pass through to content below */
+    z-index: 999; /* Below taskbar (1000) but above most content */
+}
+
+/* Re-enable pointer events for windows only */
+#desktop .window {
+    pointer-events: auto;
+}
+
+/* Make canvas overlay with pointer-events passthrough */
+#background-canvas {
+    pointer-events: none !important; /* Allow clicks to pass through */
+    z-index: 1 !important; /* Above content but below windows, taskbar, menus */
+}
+
+/* Taskbar stays at bottom with high z-index */
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Above everything */
+    pointer-events: auto;
+}
+
+/* Calendar popup */
+#calendar-popup {
+    pointer-events: auto;
+    z-index: 1001;
+    bottom: 40px !important; /* Position above taskbar */
+    height: 345px !important; /* Taller to prevent date cutoff */
+    width: 320px !important; /* Wider to prevent Saturday cutoff */
+}
+
+/* Start menu */
+.start-menu {
+    pointer-events: auto !important;
+    z-index: 99999 !important; /* Very high to ensure visibility */
+    position: fixed !important; /* Ensure it's positioned */
+}
+
+/* Ensure windows are interactive and float properly */
+.window {
+    position: fixed !important;
+    z-index: 1000;
+    pointer-events: auto;
+    min-height: 130px; /* Prevent transparent window below music player */
+}
+
+/* Optional: Add subtle shadow to windows so they stand out on any background */
+.window {
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Music player playlist sizing for overlay mode */
+.player-playlist {
+    height: 230px !important; /* Fit playlist in window */
+}

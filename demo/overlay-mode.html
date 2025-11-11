@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Environment - Overlay Mode Demo</title>
+
+    <!-- Your existing website styles -->
+    <style>
+        /* Sample website styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Sample website header */
+        .site-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .site-header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .site-header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Sample content sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .content-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .content-section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .cta-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 40px; /* Space for taskbar */
+        }
+
+        /* Notification banner */
+        .desktop-notice {
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- Desktop Environment Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/window.css">
+    <link rel="stylesheet" href="../css/taskbar.css">
+    <link rel="stylesheet" href="../css/calendar.css">
+    <link rel="stylesheet" href="../css/music_player.css">
+    <link rel="stylesheet" href="../css/new_terminal.css">
+
+    <!-- OVERLAY MODE - This makes windows float over your content -->
+    <link rel="stylesheet" href="../css/overlay-mode.css">
+</head>
+<body>
+    <!-- Notice about desktop features -->
+    <div class="desktop-notice">
+        👇 Check the taskbar at the bottom! Click "Start" to open Terminal, Clock, or other apps that float over this page
+    </div>
+
+    <!-- YOUR EXISTING WEBSITE CONTENT GOES HERE -->
+    <header class="site-header">
+        <h1>Your Amazing Website</h1>
+        <p>This is your normal website content. The desktop environment floats on top!</p>
+    </header>
+
+    <section class="content-section">
+        <h2>Welcome to Your Site</h2>
+        <p>
+            This is a demonstration of how the Desktop Environment works in overlay mode.
+            Your website content remains fully visible and interactive. The taskbar appears
+            at the bottom, and when you click applications in the Start menu, windows will
+            float above this content.
+        </p>
+        <p>
+            <strong>Try it:</strong> Click the "Start" button in the taskbar below, then
+            open the Terminal or Clock. You'll see the windows appear above this text!
+        </p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🖥️ Floating Windows</h3>
+                <p>Windows from the desktop environment float above your content with full drag, resize, and close functionality.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎯 No Interference</h3>
+                <p>The desktop layer is transparent and allows clicks to pass through to your website when no windows are open.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Fully Functional</h3>
+                <p>Terminal, clock, calendar, and music player all work perfectly while floating over your site.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2>How It Works</h2>
+        <p>
+            The overlay mode uses CSS positioning and pointer-events to create a transparent
+            layer that sits above your content. The taskbar and windows are interactive, but
+            the desktop background is completely invisible and non-blocking.
+        </p>
+        <p>
+            You can scroll this page normally, interact with all your content, and the desktop
+            environment only activates when you use the taskbar or open windows.
+        </p>
+    </section>
+
+    <div class="cta-section">
+        <h2>Ready to Add This to Your Site?</h2>
+        <p style="margin-bottom: 30px;">Just include the CSS and JS files, add overlay-mode.css, and you're done!</p>
+        <a href="#" class="cta-button">Get Started</a>
+    </div>
+
+    <section class="content-section">
+        <h2>More Content Below</h2>
+        <p>
+            This demonstrates that your page can be as long as you want. Users can scroll
+            normally, and the taskbar stays fixed at the bottom. Windows remain floating
+            above the content even when scrolling.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+            nostrud exercitation ullamco laboris.
+        </p>
+        <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+            in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your Website. Desktop environment powered by Portable Desktop Environment.</p>
+    </footer>
+
+    <!-- Desktop Environment (Overlay Layer) -->
+    <div id="desktop">
+        <canvas id="background-canvas"></canvas>
+        <!-- Windows will float here, above your content -->
+    </div>
+
+    <!-- Calendar Popup -->
+    <div id="calendar-popup" class="hidden">
+        <div class="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <span id="calendar-month-year"></span>
+            <button id="next-month">&gt;</button>
+        </div>
+        <div id="calendar-grid" class="calendar-grid"></div>
+    </div>
+
+    <!-- Taskbar (Fixed at bottom) -->
+    <div id="taskbar">
+        <div class="taskbar-start-menu">
+            <button id="start-button">Start</button>
+            <!-- Start Menu -->
+            <div class="start-menu" style="display: none;">
+                <div class="start-menu-content">
+                    <h3 style="color: #fff; padding: 10px; margin: 0; border-bottom: 1px solid #444;">Applications</h3>
+                    <div class="start-menu-item" data-app="terminal">
+                        <span>🖥️ Terminal</span>
+                    </div>
+                    <div class="start-menu-item" data-app="music">
+                        <span>🎵 Music Player</span>
+                    </div>
+                    <p style="color: #888; padding: 10px; margin: 5px 0 0 0; font-size: 11px; border-top: 1px solid #333;">
+                        💡 Click the date/time in the taskbar to view the calendar
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="taskbar-quick-launch">
+            <button id="terminal-quick-launch-button" class="taskbar-button"></button>
+        </div>
+        <div class="taskbar-apps">
+            <!-- Running app icons will go here -->
+        </div>
+        <div class="taskbar-system-tray">
+            <button id="music-player-button" class="taskbar-button">Music</button>
+            <button id="matrix-toggle-button" class="taskbar-button">Matrix: OFF</button>
+            <span id="time"></span>
+            <span id="date"></span>
+        </div>
+    </div>
+
+    <!-- Initialize Desktop Environment -->
+    <script type="module">
+        import { initDesktop } from '../js/desktop-init.js';
+        initDesktop();
+    </script>
+</body>
+</html>
