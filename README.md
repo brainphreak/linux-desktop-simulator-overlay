@@ -1,4 +1,4 @@
-# Overlay Desktop Environment
+# Linux Desktop Simulator (Overlay Version)
 
 A complete web-based desktop environment that floats over your existing website content. Features draggable windows, taskbar, music player, calendar, matrix rain effect, and a full Linux terminal emulator.
 
