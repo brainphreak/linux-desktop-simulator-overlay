@@ -6,11 +6,7 @@ A complete web-based desktop environment that floats over your existing website 
 
 Open `demo/overlay-mode.html` to see it in action!
 
-See it live at www.brainphreak.net 
-
 🌐 **Live Site:** [brainphreak.net](https://brainphreak.net)
-
-![brainphreak.net Screenshot](images/brainphreak.net.png)
 
 ## Table of Contents
 
