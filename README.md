@@ -12,8 +12,6 @@ Open `demo/overlay-mode.html` to see it in action!
 
 - [Core Desktop Experience](#core-desktop-experience)
 - [Integrated Applications](#integrated-applications)
-- [Projects Showcase](#projects-showcase)
-- [Articles & Content](#articles--content)
 - [Linux Terminal Simulator](#linux-terminal-simulator)
 - [Technology Stack](#technology-stack)
 - [Performance & Optimization](#performance--optimization)
