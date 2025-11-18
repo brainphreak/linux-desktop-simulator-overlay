@@ -8,6 +8,8 @@ Open `demo/overlay-mode.html` to see it in action!
 
 🌐 **Live Site:** [brainphreak.net](https://brainphreak.net)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F2F35TO7X)
+
 ## Table of Contents
 
 - [Core Desktop Experience](#core-desktop-experience)
