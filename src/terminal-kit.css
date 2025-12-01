@@ -1,0 +1,880 @@
+/* ============================================================================
+   TERMINAL KIT - Standalone Terminal, Music Player & Taskbar Styles
+   Adapted from brainphreak.net for theblackpacket
+   ============================================================================ */
+
+/* --- CSS Variables --- */
+:root {
+    --tk-green: #00ff00;
+    --tk-green-dark: #00aa00;
+    --tk-green-darker: #008800;
+    --tk-green-darkest: #004400;
+    --tk-green-bg: #003300;
+    --tk-black: #000000;
+    --tk-gray-dark: #222222;
+    --tk-gray: #333333;
+    --tk-gray-light: #404040;
+    --tk-white: #ffffff;
+    --tk-red: #ff5f57;
+    --tk-yellow: #ffbd2e;
+    --tk-green-btn: #28ca42;
+}
+
+/* ============================================================================
+   TASKBAR STYLES
+   ============================================================================ */
+
+#tk-taskbar {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 40px !important;
+    background-color: var(--tk-black) !important;
+    border-top: 1px solid var(--tk-green) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    z-index: 10000 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    /* Mobile fixes - prevent movement during scroll */
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+}
+
+#tk-taskbar * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+.tk-taskbar-start {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tk-taskbar-apps {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.tk-taskbar-app-button {
+    background: var(--tk-gray-dark) !important;
+    border: 1px solid var(--tk-green) !important;
+    color: var(--tk-green) !important;
+    padding: 5px 10px !important;
+    margin: 0 0 0 5px !important;
+    max-width: 150px !important;
+    min-width: 40px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 12px !important;
+    line-height: normal !important;
+    border-radius: 0 !important;
+}
+
+.tk-taskbar-app-button:hover {
+    background: var(--tk-gray);
+}
+
+.tk-taskbar-app-button.active {
+    background: #005500;
+    border-style: inset;
+}
+
+.tk-taskbar-systray {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.tk-taskbar-time {
+    color: var(--tk-green) !important;
+    text-align: right !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+}
+
+.tk-taskbar-time #tk-current-time {
+    font-weight: bold;
+}
+
+.tk-taskbar-time #tk-current-date {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+/* Quick launch buttons */
+.tk-quick-launch-btn {
+    background: none !important;
+    color: var(--tk-green) !important;
+    border: 1px solid var(--tk-green) !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    padding: 5px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    font-size: 12px !important;
+    line-height: normal !important;
+    border-radius: 0 !important;
+    position: relative !important;
+}
+
+.tk-quick-launch-btn:hover {
+    background-color: var(--tk-green-bg);
+}
+
+.tk-quick-launch-btn.active {
+    background-color: #005500;
+    border-style: inset;
+}
+
+/* Terminal quick launch button - shows >_ icon like brainphreak */
+#tk-terminal-quick-launch-btn {
+    background-color: var(--tk-black) !important;
+    color: var(--tk-green) !important;
+    border: 1px solid var(--tk-green) !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    padding: 5px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    position: relative !important;
+    overflow: hidden !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: normal !important;
+    border-radius: 0 !important;
+}
+
+#tk-terminal-quick-launch-btn::before {
+    content: '>';
+    margin-right: 3px;
+}
+
+#tk-terminal-quick-launch-btn::after {
+    content: '_';
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+/* ============================================================================
+   WINDOW BASE STYLES
+   ============================================================================ */
+
+.tk-window {
+    position: fixed;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    min-width: 200px;
+    min-height: 150px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--tk-black);
+    outline: 1px solid #808080;
+    background-color: var(--tk-gray-dark);
+    z-index: 9999;
+}
+
+.tk-window.tk-hidden {
+    display: none !important;
+}
+
+.tk-window-title-bar {
+    background-color: var(--tk-green);
+    color: var(--tk-black);
+    padding: 5px 10px;
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+    user-select: none;
+}
+
+.tk-window-title-bar:active {
+    cursor: grabbing;
+}
+
+.tk-window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.tk-window-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.tk-window-btn.minimize {
+    background: var(--tk-yellow);
+}
+
+.tk-window-btn.maximize {
+    background: var(--tk-green-btn);
+}
+
+.tk-window-btn.playlist-toggle {
+    background: var(--tk-green-btn);
+}
+
+.tk-window-btn.close {
+    background: var(--tk-red);
+}
+
+.tk-window-content {
+    flex-grow: 1;
+    color: var(--tk-green);
+    position: relative;
+    overflow-y: auto;
+    height: 0;
+}
+
+/* Scrollbar styling */
+.tk-window-content::-webkit-scrollbar,
+.tk-terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tk-window-content::-webkit-scrollbar-track,
+.tk-terminal-body::-webkit-scrollbar-track {
+    background: var(--tk-green-dark);
+}
+
+.tk-window-content::-webkit-scrollbar-thumb,
+.tk-terminal-body::-webkit-scrollbar-thumb {
+    background: var(--tk-green);
+    border-radius: 4px;
+}
+
+.tk-window-content::-webkit-scrollbar-thumb:hover,
+.tk-terminal-body::-webkit-scrollbar-thumb:hover {
+    background: #00cc00;
+}
+
+/* Resize handles */
+.tk-resize-handle {
+    position: absolute;
+    background: transparent;
+    z-index: 10;
+}
+
+.tk-resize-handle-n { top: -5px; left: 10px; right: 10px; height: 10px; cursor: ns-resize; }
+.tk-resize-handle-s { bottom: -5px; left: 10px; right: 10px; height: 10px; cursor: ns-resize; }
+.tk-resize-handle-e { right: -5px; top: 10px; bottom: 10px; width: 10px; cursor: ew-resize; }
+.tk-resize-handle-w { left: -5px; top: 10px; bottom: 10px; width: 10px; cursor: ew-resize; }
+.tk-resize-handle-ne { top: -5px; right: -5px; width: 15px; height: 15px; cursor: nesw-resize; }
+.tk-resize-handle-nw { top: -5px; left: -5px; width: 15px; height: 15px; cursor: nwse-resize; }
+.tk-resize-handle-se { bottom: -5px; right: -5px; width: 15px; height: 15px; cursor: nwse-resize; }
+.tk-resize-handle-sw { bottom: -5px; left: -5px; width: 15px; height: 15px; cursor: nesw-resize; }
+
+/* ============================================================================
+   TERMINAL STYLES
+   ============================================================================ */
+
+.tk-terminal {
+    width: 700px;
+    height: 450px;
+    background: transparent;
+    border: 1px solid var(--tk-green-darkest);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    resize: both;
+    outline: none;
+}
+
+.tk-terminal:focus,
+.tk-terminal *:focus {
+    outline: none;
+}
+
+.tk-terminal .tk-window-title-bar {
+    background: rgba(0, 20, 0, 0.95);
+    color: var(--tk-green);
+    border-bottom: 1px solid var(--tk-green-darkest);
+    padding: 8px 15px;
+}
+
+.tk-terminal-body {
+    flex: 1;
+    overflow-y: auto;
+    color: var(--tk-green);
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: text;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.85);
+    font-family: 'Courier New', monospace;
+    outline: none;
+}
+
+.tk-terminal-body:focus {
+    outline: none;
+}
+
+.tk-terminal-inner {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.tk-terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    line-height: 20px;
+    height: 20px;
+}
+
+.tk-terminal-frozen-line {
+    margin-top: 5px;
+    margin-bottom: 0;
+    line-height: 20px;
+    min-height: 20px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    user-select: text;
+}
+
+.tk-terminal-prompt {
+    color: var(--tk-green);
+    margin-right: 8.5px;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.tk-terminal-frozen-prompt {
+    color: var(--tk-green);
+    margin-right: 8px;
+    white-space: nowrap;
+    user-select: text;
+}
+
+.tk-terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--tk-green);
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    outline: none;
+    flex: 1;
+    caret-color: var(--tk-green);
+    margin-bottom: 0px;
+    resize: none;
+    overflow: hidden;
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.tk-terminal-input.tk-password {
+    -webkit-text-security: disc;
+    text-security: disc;
+}
+
+.tk-terminal-command-history {
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    color: var(--tk-green);
+    padding: 0 0 0 2px;
+    margin: 0;
+    border: none;
+    outline: none;
+    display: inline-block;
+    white-space: pre-wrap;
+    word-break: break-all;
+    flex: 1;
+}
+
+.tk-terminal-output {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 20px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    user-select: text;
+}
+
+/* ============================================================================
+   MUSIC PLAYER STYLES
+   ============================================================================ */
+
+.tk-music-player {
+    width: 275px;
+    height: 130px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 2px solid #333;
+    border-radius: 4px;
+    font-family: 'Tahoma', 'Arial', sans-serif;
+    resize: none !important;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    min-width: 275px;
+    min-height: 130px;
+}
+
+.tk-music-player .tk-window-title-bar {
+    background: linear-gradient(to bottom, #404040 0%, #202020 100%);
+    height: 14px;
+    padding: 0 5px;
+    border-bottom: 1px solid var(--tk-black);
+    font-size: 9px;
+    color: var(--tk-white);
+}
+
+.tk-player-body {
+    padding: 6px;
+    height: calc(100% - 14px);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.tk-player-display {
+    background: var(--tk-black);
+    border: 1px solid #090;
+    flex: 1;
+    padding: 5px;
+    color: #0f0;
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.tk-player-song-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tk-player-song-title {
+    color: #0f0;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.tk-player-time {
+    color: #0f0;
+    white-space: nowrap;
+}
+
+.tk-player-visualizer {
+    height: 12px;
+    background: var(--tk-black);
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+}
+
+.tk-visualizer-bar {
+    flex: 1;
+    background: #0f0;
+    height: 0%;
+    transition: height 0.1s ease;
+}
+
+/* Seek bar */
+.tk-player-seek-bar {
+    width: 100%;
+    margin: 10px 0;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #030;
+    border-radius: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.tk-player-seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #000;
+    border: 1px solid #0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.tk-player-seek-bar::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #000;
+    border: 1px solid #0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.tk-player-control-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.tk-player-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+.tk-player-button {
+    width: 23px;
+    height: 18px;
+    background: linear-gradient(to bottom, #555 0%, #333 100%);
+    border: 1px solid var(--tk-black);
+    border-radius: 2px;
+    color: #0f0;
+    font-size: 8px;
+    font-family: 'Courier New', 'Consolas', monospace;
+    font-weight: bold;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    padding: 0;
+}
+
+.tk-player-button:hover {
+    background: linear-gradient(to bottom, #666 0%, #444 100%);
+}
+
+.tk-player-button:active {
+    background: linear-gradient(to bottom, #333 0%, #555 100%);
+}
+
+.tk-player-button.active {
+    background: linear-gradient(to bottom, #040 0%, #020 100%);
+    color: #0f0;
+    box-shadow: inset 0 0 5px #0f0;
+}
+
+.tk-player-playlist {
+    position: fixed;
+    background: rgba(0, 10, 0, 0.95);
+    border: 1px solid #004400;
+    padding: 10px;
+    overflow-y: auto;
+    display: none;
+    z-index: 10001;
+    height: 185px;
+    color: var(--tk-green);
+}
+
+.tk-playlist-item {
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--tk-green-bg);
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.tk-playlist-item:hover {
+    background: rgba(0, 50, 0, 0.5);
+}
+
+.tk-playlist-item.active {
+    background: rgba(0, 100, 0, 0.7);
+    color: #0f0;
+}
+
+/* ============================================================================
+   RESPONSIVE STYLES
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .tk-terminal {
+        width: 100% !important;
+        height: 300px !important;
+        left: 0 !important;
+        top: auto !important;
+        bottom: 40px !important;
+        border-radius: 0;
+        position: fixed !important;
+    }
+
+    .tk-music-player {
+        width: 100% !important;
+        left: 0 !important;
+        top: 0 !important;
+        border-radius: 0;
+        position: fixed !important;
+    }
+
+    #tk-taskbar {
+        height: 35px;
+        padding: 0 5px;
+    }
+
+    .tk-taskbar-app-button {
+        padding: 3px 6px;
+        font-size: 10px;
+    }
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+.tk-hidden {
+    display: none !important;
+}
+
+.tk-dragging {
+    cursor: grabbing !important;
+    user-select: none !important;
+}
+
+/* Prevent text selection during drag */
+.tk-no-select {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* Remove all focus outlines from terminal-kit elements */
+#tk-terminal:focus,
+#tk-terminal *:focus,
+#tk-music-player:focus,
+#tk-music-player *:focus,
+#tk-taskbar:focus,
+#tk-taskbar *:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ============================================================================
+   MOBILE TERMINAL OVERLAY STYLES
+   ============================================================================ */
+
+.tk-mobile-terminal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 20000;
+    display: flex;
+    flex-direction: column;
+    /* Prevent any zoom/scale issues */
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+}
+
+.tk-mobile-terminal-overlay.tk-hidden {
+    display: none !important;
+}
+
+.tk-mobile-terminal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    background-color: #000;
+    color: #0f0;
+}
+
+/* Mobile Terminal Header */
+.tk-mobile-terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #111;
+    border-bottom: 1px solid #0f0;
+    flex-shrink: 0;
+}
+
+.tk-mobile-terminal-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
+}
+
+.tk-mobile-terminal-close {
+    background: transparent;
+    border: 1px solid #0f0;
+    color: #0f0;
+    font-size: 20px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.tk-mobile-terminal-close:active {
+    background: #0f0;
+    color: #000;
+}
+
+/* Mobile Terminal Output */
+.tk-mobile-terminal-output {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-overflow-scrolling: touch;
+    /* Align content to bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.tk-mobile-line {
+    margin-bottom: 2px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    color: #0f0;
+}
+
+.tk-mobile-prompt-line {
+    color: #0f0;
+}
+
+/* Mobile Terminal Input Area */
+.tk-mobile-terminal-input-area {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #111;
+    border-top: 1px solid #333;
+    flex-shrink: 0;
+}
+
+.tk-mobile-terminal-prompt {
+    color: #0f0;
+    font-size: 14px;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+.tk-mobile-terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #0f0;
+    font-family: inherit;
+    font-size: 16px; /* 16px prevents iOS auto-zoom on focus */
+    caret-color: #0f0;
+    /* Prevent zoom on focus */
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+}
+
+.tk-mobile-terminal-input::placeholder {
+    color: #060;
+}
+
+/* Prevent any text inputs from causing zoom */
+.tk-mobile-terminal input,
+.tk-mobile-terminal textarea {
+    font-size: 16px !important;
+}
+
+/* Mobile Terminal Control Buttons */
+.tk-mobile-terminal-controls {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 15px;
+    background-color: #0a0a0a;
+    border-top: 1px solid #333;
+    flex-shrink: 0;
+    gap: 10px;
+}
+
+.tk-mobile-ctrl-btn {
+    background: #1a1a1a;
+    border: 1px solid #555;
+    color: #0f0;
+    padding: 12px 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    flex: 1;
+    max-width: 80px;
+    text-align: center;
+}
+
+.tk-mobile-ctrl-btn:active {
+    background: #0f0;
+    color: #000;
+}
+
+.tk-mobile-ctrl-c {
+    background: #1a0000;
+    border-color: #550000;
+    color: #ff5555;
+}
+
+.tk-mobile-ctrl-c:active {
+    background: #ff5555;
+    color: #000;
+}
+
+/* Mobile Terminal Scrollbar */
+.tk-mobile-terminal-output::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tk-mobile-terminal-output::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.tk-mobile-terminal-output::-webkit-scrollbar-thumb {
+    background: #0a0;
+    border-radius: 3px;
+}
+
+/* Mobile Safe Area Support */
+@supports (padding: env(safe-area-inset-top)) {
+    .tk-mobile-terminal-header {
+        padding-top: calc(12px + env(safe-area-inset-top));
+    }
+
+    .tk-mobile-terminal-controls {
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+}
