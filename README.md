@@ -288,7 +288,7 @@ This project is licensed under the GPLv3 License - see the LICENSE file for deta
 
 ## Credits
 
-Created by [The Black Packet](https://theblackpacket.com) - A cybersecurity collective.
+Created by [brainphreak](https://brainphreak.net)
 
 ## Contributing
 
